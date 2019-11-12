@@ -1,0 +1,222 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Java多线程 - 线程的使用 - ZUZI-BLOG</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate">
+    <meta name="keywords" content="guohezuzi,"> 
+    <meta name="description" content="Java多线程 - 线程的使用线程的创建通过实现Runnable接口12345678910111213141516171819202122232425262728class RunnableDemo,"> 
+    <meta name="author" content="guohezuzi"> 
+    <link rel="alternative" href="atom.xml" title="ZUZI-BLOG" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.ico"> 
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <link rel="stylesheet" href="/css/diaspora.css">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+</head>
+</html>
+<body class="loading">
+    <span id="config-title" style="display:none">ZUZI-BLOG</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;" data-url="http://guohezuzi.github.io"></a>
+    <div title="播放/暂停" class="icon-play"></div>
+    <h3 class="subtitle">Java多线程 - 线程的使用</h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+            <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class="main">
+        <h1 class="title">Java多线程 - 线程的使用</h1>
+        <div class="stuff">
+            <span>五月 27, 2019</span>
+            
+
+        </div>
+        <div class="content markdown">
+            <h1 id="Java多线程-线程的使用"><a href="#Java多线程-线程的使用" class="headerlink" title="Java多线程 - 线程的使用"></a>Java多线程 - 线程的使用</h1><h2 id="线程的创建"><a href="#线程的创建" class="headerlink" title="线程的创建"></a>线程的创建</h2><h4 id="通过实现Runnable接口"><a href="#通过实现Runnable接口" class="headerlink" title="通过实现Runnable接口"></a>通过实现Runnable接口</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RunnableDemo</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String threadName;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">RunnableDemo</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.threadName = name;</span><br><span class="line">        System.out.println(<span class="string">"creating thread:"</span> + threadName);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Running "</span> + threadName);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">                System.out.println(<span class="string">"Thread:"</span> + threadName + <span class="string">","</span> + i);</span><br><span class="line">                Thread.sleep(<span class="number">50</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            System.out.println(<span class="string">"Thread "</span> + threadName + <span class="string">"interrupter"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">"Thread "</span> + threadName + <span class="string">" exiting"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// run</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        RunnableDemo r = <span class="keyword">new</span> RunnableDemo(<span class="string">"MyThread"</span>);</span><br><span class="line">        r.run();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="通过继承Thread类本身"><a href="#通过继承Thread类本身" class="headerlink" title="通过继承Thread类本身"></a>通过继承Thread类本身</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreadDemo</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"thread"</span> + Thread.currentThread().getId() + <span class="string">" running..."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// run 10 thread</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">        ThreadDemo[] threadDemos = <span class="keyword">new</span> ThreadDemo[<span class="number">10</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; threadDemos.length; i++) &#123;</span><br><span class="line">            threadDemos[i] = <span class="keyword">new</span> ThreadDemo();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (ThreadDemo threadDemo : threadDemos) &#123;</span><br><span class="line">            threadDemo.start();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// wait other thread complete</span></span><br><span class="line">        <span class="keyword">for</span> (ThreadDemo threadDemo : threadDemos) &#123;</span><br><span class="line">            threadDemo.join();</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">"completing"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="通过实现Callable创建线程-可以对线程返回值处理"><a href="#通过实现Callable创建线程-可以对线程返回值处理" class="headerlink" title="通过实现Callable创建线程(可以对线程返回值处理)"></a>通过实现Callable创建线程(可以对线程返回值处理)</h4><p>通过<code>FutureTask</code>包装一个<code>Callable</code>的实例，再通过<code>Thread</code>包装<code>FutureTask</code>的实例，然后调用<code>Thread</code>的<code>start()</code>方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CallableDemo</span> <span class="keyword">implements</span> <span class="title">Callable</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">call</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"yo!"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">callUse</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        CallableDemo callableDemo = <span class="keyword">new</span> CallableDemo();</span><br><span class="line">        System.out.println(callableDemo.call());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">threadUse</span><span class="params">()</span> <span class="keyword">throws</span> ExecutionException, InterruptedException </span>&#123;</span><br><span class="line">        FutureTask futureTask= <span class="keyword">new</span> FutureTask&lt;&gt;(<span class="keyword">new</span> CallableDemo());</span><br><span class="line">        Thread thread=<span class="keyword">new</span> Thread(futureTask);</span><br><span class="line">        thread.start();</span><br><span class="line">        System.out.println(futureTask.get());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>FutureTask继承关系</p>
+<center><br><br><img src="https://cdn.guohezuzi.cn/public/img/futureTask.png" alt="FutureTask继承关系"><br><br></center>
+
+<h2 id="线程池执行线程"><a href="#线程池执行线程" class="headerlink" title="线程池执行线程"></a>线程池执行线程</h2><h4 id="线程池的创建"><a href="#线程池的创建" class="headerlink" title="线程池的创建"></a>线程池的创建</h4><p>一般通过ThreadPoolExecutor类来创建线程</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ThreadPoolExecutor poolExecutor = <span class="keyword">new</span> ThreadPoolExecutor(</span><br><span class="line">                          <span class="keyword">int</span> corePoolSize,</span><br><span class="line">                          <span class="keyword">int</span> maximumPoolSize,</span><br><span class="line">                          <span class="keyword">long</span> keepAliveTime,</span><br><span class="line">                          TimeUnit unit,</span><br><span class="line">                          BlockingQueue workQueue,</span><br><span class="line">                          ThreadFactory threadFactory,</span><br><span class="line">                          RejectedExecutionHandler handler</span><br><span class="line">                          )</span><br></pre></td></tr></table></figure>
+<h5 id="变量说明"><a href="#变量说明" class="headerlink" title="变量说明"></a>变量说明</h5><ul>
+<li><p>corePoolSize 线程池的基本大小</p>
+</li>
+<li><p>maximumPoolSize 线程池的最大大小</p>
+</li>
+<li><p>keepAliveTime 空闲线程(超出基本大小的线程)的存活时间</p>
+</li>
+<li><p>unit 空闲线程存活时间的单位(毫秒,秒…)</p>
+</li>
+<li><p>workQueue 任务队列，提交的任务的阻塞队列(<code>BlockingQueue</code>)。more: <a href="https://www.guohezuzi.cn/article/java-multhread-blockingqueue" target="_blank" rel="noopener">Java多线程 - 阻塞队列详解</a></p>
+</li>
+<li><p>threadFactory 线程工产，线程的创建策略，有默认实现，可以通过定制线程工厂来监听线程信息</p>
+</li>
+<li><p>handler 饱和策略，当线程由于任务队列满了，或者某个任务被提交到一个已被关闭的线程的处理方式</p>
+<ul>
+<li><p>AbortPolicy 中止策略，<strong>默认策略</strong> ，该策略会抛出RejectExecutionException异常，调用者可以根据这个异常编写自己的处理代码</p>
+</li>
+<li><p>DiscardRunsPolicy 抛弃策略，悄悄抛弃该任务，不抛异常</p>
+</li>
+<li><p>DiscardOldestPolicy 抛弃最久任务策略 将工作队列中最老的（也就是下一个要执行的）任务抛弃。<strong>优先队列将会是优先级最高的</strong></p>
+</li>
+<li><p>CallerRunsPolicy 调用者执行策略，将线程添加到添加工作队列的线程去执行</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>ps: 构造器参考下表</p>
+<h5 id="继承关系"><a href="#继承关系" class="headerlink" title="继承关系"></a>继承关系</h5><p><img src="https://cdn.guohezuzi.cn/public/img/thread.png" alt></p>
+<h4 id="线程池的使用"><a href="#线程池的使用" class="headerlink" title="线程池的使用"></a>线程池的使用</h4><h5 id="Runable接口"><a href="#Runable接口" class="headerlink" title="Runable接口"></a>Runable接口</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException, ExecutionException </span>&#123;</span><br><span class="line">        ExecutorService pool=Executors.newFixedThreadPool(<span class="number">2</span>);</span><br><span class="line">        pool.execute(() -&gt; System.out.println(<span class="string">"yo!"</span>));</span><br><span class="line">        pool.shutdown();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="Callable接口"><a href="#Callable接口" class="headerlink" title="Callable接口"></a>Callable接口</h5><p>通过调用submit方法</p>
+<p>在<code>ExecutorService</code>中提供了重载的<code>submit()</code>方法，该方法既可以接收<code>Runnable</code>实例又能接收<code>Callable</code>实例。对于实现<code>Callable</code>接口的类，需要覆写<code>call()</code>方法，并且只能通过<code>ExecutorService</code>的<code>submit()</code>方法来启动<code>call()</code>方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException, ExecutionException </span>&#123;</span><br><span class="line">        ExecutorService pool=Executors.newFixedThreadPool(<span class="number">2</span>);</span><br><span class="line">        Future future=pool.submit(() -&gt; &#123;</span><br><span class="line">            Thread.sleep(<span class="number">100</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"yo!"</span>;</span><br><span class="line">        &#125;);</span><br><span class="line">        System.out.println(future.get());</span><br><span class="line">        pool.shutdown();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="延时任务与周期任务的使用"><a href="#延时任务与周期任务的使用" class="headerlink" title="延时任务与周期任务的使用"></a>延时任务与周期任务的使用</h5><p>定义：延时任务(“在100ms后执行的任务”) 周期任务(“每10ms执行一次的任务”)</p>
+<p>使用：通过new ScheduledThreadPoolExector()对象<img src="https://cdn.guohezuzi.cn/public/img/ScheduleExecutor.png" alt="ScheduledThreadPoolExector对象"></p>
+<p>Demo:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ScheduleExecutorDemo</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ScheduleExecutorDemo</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(name + <span class="string">" 运行"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">        ScheduledExecutorService executorService1 = Executors.newScheduledThreadPool(<span class="number">2</span>);</span><br><span class="line">        <span class="comment">// after 10s run</span></span><br><span class="line">        executorService1.schedule(<span class="keyword">new</span> ScheduleExecutorDemo(<span class="string">"task1"</span>), <span class="number">10</span>, TimeUnit.SECONDS);</span><br><span class="line">        executorService1.shutdown();</span><br><span class="line"></span><br><span class="line">        ScheduledExecutorService executorService2 = Executors.newScheduledThreadPool(<span class="number">2</span>);</span><br><span class="line">        <span class="comment">// run per 1s</span></span><br><span class="line">        executorService2.scheduleAtFixedRate(<span class="keyword">new</span> ScheduleExecutorDemo(<span class="string">"task1"</span>), </span><br><span class="line">                <span class="number">0</span>, <span class="number">1</span>, TimeUnit.SECONDS);</span><br><span class="line">        <span class="comment">// run per 2s</span></span><br><span class="line">        executorService2.scheduleWithFixedDelay(<span class="keyword">new</span> ScheduleExecutorDemo(<span class="string">"task2"</span>), </span><br><span class="line">                <span class="number">0</span>, <span class="number">2</span>, TimeUnit.SECONDS);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="使用tips"><a href="#使用tips" class="headerlink" title="使用tips"></a>使用tips</h5><p>来源：<a href="https://github.com/alibaba/p3c" target="_blank" rel="noopener">阿里巴巴Java开发手册</a></p>
+<ul>
+<li><p>线程资源必须通过线程池提供,不允许在应用中自行显式创建线程。</p>
+<p>说明: 使用线程池的好处是减少在创建和销毁线程上所消耗的时间以及系统资源的开销,解决资源不足的问题。如果不使用线程池,有可能造成系统创建大量同类线程而导致消耗完内存或者“过度切换”的问题。</p>
+</li>
+<li><p>线程池不允许使用 Executors 去创建,而是通过 ThreadPoolExecutor 的方式,这样的处理方式让写的同学更加明确线程池运行规则,规避资源耗尽的风险。</p>
+<p>说明: Executors 返回的线程池对象的弊端如下:</p>
+<ul>
+<li><p>FixedThreadPool 和 SingleThreadPool :允许的请求队列长度为 Integer.MAX_VALUE ,可能会堆积大量的请求,从而导致 OOM 。</p>
+</li>
+<li><p>CachedThreadPool 和 ScheduledThreadPool :允许的创建线程数量为 Integer.MAX_VALUE ,可能会创建大量的线程,从而导致 OOM 。</p>
+</li>
+</ul>
+</li>
+<li><p>多线程并行处理定时任务时, Timer 运行多个 TimeTask 时,只要其中之一没有捕获抛出的异常,其它任务便会自动终止运行,使用 ScheduledExecutorService 则没有这个问题。</p>
+</li>
+</ul>
+<h2 id="Ref"><a href="#Ref" class="headerlink" title="Ref:"></a>Ref:</h2><ol>
+<li><p>JDK1.8.0 源码</p>
+</li>
+<li><p><a href="http://codepub.cn/2016/02/01/Java-multi-thread-Callable-interface-and-thread-pool/" target="_blank" rel="noopener">Java多线程之Callable接口及线程池</a></p>
+</li>
+<li><p><a href="https://book.douban.com/subject/10484692/" target="_blank" rel="noopener">《Java并发编程实战》</a></p>
+</li>
+<li><p><a href="https://book.douban.com/subject/27034721/" target="_blank" rel="noopener">《Java多线程编程实战指南(核心篇)》</a></p>
+</li>
+</ol>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src>
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        <li title="0" data-url="http://link.hhtjim.com/163/5146554.mp3"></li>
+                    
+                        <li title="1" data-url="http://link.hhtjim.com/qq/001faIUs4M2zna.mp3"></li>
+                    
+                </ul>
+            
+        </div>
+        
+    <div id="gitalk-container" class="comment link" data-ae="false" data-ci data-cs data-r data-o data-a data-d="false">查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</html>

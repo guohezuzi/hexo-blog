@@ -1,0 +1,179 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title> - ZUZI-BLOG</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate">
+    <meta name="keywords" content="guohezuzi,"> 
+    <meta name="description" content="记一次Java11切换经历系统切换(Arch Linux)JDK下载
+oracle官网下载orcale-jdk(源码带文档注释)
+
+源安装openjdk,运行sudo pacman -S jdk11,"> 
+    <meta name="author" content="guohezuzi"> 
+    <link rel="alternative" href="atom.xml" title="ZUZI-BLOG" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.ico"> 
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <link rel="stylesheet" href="/css/diaspora.css">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+</head>
+</html>
+<body class="loading">
+    <span id="config-title" style="display:none">ZUZI-BLOG</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;" data-url="http://guohezuzi.github.io"></a>
+    <div title="播放/暂停" class="icon-play"></div>
+    <h3 class="subtitle"></h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+            <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class="main">
+        <h1 class="title"></h1>
+        <div class="stuff">
+            <span>十一月 13, 2019</span>
+            
+
+        </div>
+        <div class="content markdown">
+            <h1 id="记一次Java11切换经历"><a href="#记一次Java11切换经历" class="headerlink" title="记一次Java11切换经历"></a>记一次Java11切换经历</h1><h3 id="系统切换-Arch-Linux"><a href="#系统切换-Arch-Linux" class="headerlink" title="系统切换(Arch Linux)"></a>系统切换(Arch Linux)</h3><h5 id="JDK下载"><a href="#JDK下载" class="headerlink" title="JDK下载"></a>JDK下载</h5><ul>
+<li><p>oracle官网下载<a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html" target="_blank" rel="noopener">orcale-jdk</a>(源码带文档注释)</p>
+</li>
+<li><p>源安装openjdk,运行<code>sudo pacman -S jdk11-openjdk</code>(idea查看源码反编译无注释),可运行<code>sudo pacman -S openjdk11-doc</code>增加稳定</p>
+</li>
+</ul>
+<h5 id="JDK版本切换"><a href="#JDK版本切换" class="headerlink" title="JDK版本切换"></a>JDK版本切换</h5><p>通过源安装的open-jdk直接运行<code>sudo archlinux-java set java-8-openjdk</code>切换.</p>
+<p>orcalce下载的jdk,通过将下载的jdk移动到<code>/usr/lib/jvm/</code>下,注意命名为java-\${JAVA_MAJOR_VERSION}-${VENDOR_NAME},这时通过<code>archlinux-java status</code>命令查看会发现新增的JDK,然后设置.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"> ~ sudo cp -r app/jdk-11.0.4 /usr/lib/jvm/java-11-oraclejdk</span><br><span class="line"> ~ archlinux-java status                         ✔  14:50:02</span><br><span class="line">Available Java environments:</span><br><span class="line">  java-11-oraclejdk (default)</span><br><span class="line">  java-8-openjdk</span><br><span class="line"> ~ sudo archlinux-java <span class="built_in">set</span> java-11-oraclejdk     ✔  14:50:06</span><br><span class="line"> ~ java -version                                 ✔  14:50:29</span><br><span class="line">java version <span class="string">"11.0.4"</span> 2019-07-16 LTS</span><br><span class="line">Java(TM) SE Runtime Environment 18.9 (build 11.0.4+10-LTS)</span><br><span class="line">Java HotSpot(TM) 64-Bit Server VM 18.9 (build 11.0.4+10-LTS, mixed mode)</span><br></pre></td></tr></table></figure>
+<h3 id="IDEA配置"><a href="#IDEA配置" class="headerlink" title="IDEA配置"></a>IDEA配置</h3><p>1.设置项目JDK</p>
+<p><img src="https://www.guohezuzi.cn/public/img/blog/java11-1.png" alt></p>
+<p>2.设置模块JDK</p>
+<p><img src="https://www.guohezuzi.cn/public/img/blog/java11-2.png" alt></p>
+<p>3.maven配置</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-compiler-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.8.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">release</span>&gt;</span>11<span class="tag">&lt;/<span class="name">release</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="新特性使用"><a href="#新特性使用" class="headerlink" title="新特性使用"></a>新特性使用</h3><p>1.Java 解释器直接执行 Java 源代码</p>
+<p>写一个简单的程序,计算个人存活及死亡时间</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.time.LocalDate;</span><br><span class="line"><span class="keyword">import</span> java.time.temporal.ChronoUnit;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * \* Created with IntelliJ IDEA.</span></span><br><span class="line"><span class="comment"> * \* <span class="doctag">@author</span>: zuzi</span></span><br><span class="line"><span class="comment"> * \* Date: 2019-07-29</span></span><br><span class="line"><span class="comment"> * \* Time: 上午9:24</span></span><br><span class="line"><span class="comment"> * \* Description: 向死而生</span></span><br><span class="line"><span class="comment"> * \</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LiveTowardsDeath1</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        liveTowardsDeath(<span class="number">1999</span>,<span class="number">2</span>,<span class="number">24</span>,<span class="number">80</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">liveTowardsDeath</span><span class="params">(<span class="keyword">int</span> year,<span class="keyword">int</span> month,<span class="keyword">int</span> day,<span class="keyword">int</span> liveYear)</span></span>&#123;</span><br><span class="line">        LocalDate birth = LocalDate.of(year, month, day);</span><br><span class="line">        LocalDate death = LocalDate.of(year+liveYear, month, day);</span><br><span class="line">        <span class="keyword">long</span> lifeDays = ChronoUnit.DAYS.between(birth, LocalDate.now());</span><br><span class="line">        <span class="keyword">long</span> deathDays = ChronoUnit.DAYS.between(LocalDate.now(), death);</span><br><span class="line">        System.out.println(<span class="string">"已存活: "</span>+lifeDays+<span class="string">"天"</span>);</span><br><span class="line">        System.out.println(<span class="string">"距离死亡: "</span>+deathDays+<span class="string">"天"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行 </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">~ java LiveTowardsDeath1.java                   ✔  15:29:42</span><br><span class="line">已存活: 7461天</span><br><span class="line">距离死亡: 21759天</span><br></pre></td></tr></table></figure>
+<p>2.作为脚本运行</p>
+<p>修改.java文件为.sh并将内容修改如下:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!java --source 11</span></span><br><span class="line"></span><br><span class="line">import java.time.LocalDate;</span><br><span class="line">import java.time.temporal.ChronoUnit;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * \* Created with IntelliJ IDEA.</span><br><span class="line"> * \* @author: zuzi</span><br><span class="line"> * \* Date: 2019-07-29</span><br><span class="line"> * \* Time: 上午9:24</span><br><span class="line"> * \* Description: 向死而生</span><br><span class="line"> * \</span><br><span class="line"> */</span><br><span class="line">public class LiveTowardsDeath0 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        liveTowardsDeath(1999,2,24,80);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private static void liveTowardsDeath(int year,int month,int day,int liveYear)&#123;</span><br><span class="line">        LocalDate birth = LocalDate.of(year, month, day);</span><br><span class="line">        LocalDate death = LocalDate.of(year+liveYear, month, day);</span><br><span class="line">        long lifeDays = ChronoUnit.DAYS.between(birth, LocalDate.now());</span><br><span class="line">        long deathDays = ChronoUnit.DAYS.between(LocalDate.now(), death);</span><br><span class="line">        System.out.println(<span class="string">"已存活: "</span>+lifeDays+<span class="string">"天 "</span>);</span><br><span class="line">        System.out.println(<span class="string">"距离死亡: "</span>+deathDays+<span class="string">"天"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> ~ chmod u+x LiveTowardsDeath.sh                 ✔  15:34:45</span><br><span class="line"> ~ ./LiveTowardsDeath.sh                         ✔  15:35:25</span><br><span class="line">已存活: 7461天 </span><br><span class="line">距离死亡: 21759天</span><br></pre></td></tr></table></figure>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://wiki.archlinux.org/index.php/Java_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87" target="_blank" rel="noopener">arch-linux文档</a>)</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src>
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        <li title="0" data-url="http://link.hhtjim.com/163/5146554.mp3"></li>
+                    
+                        <li title="1" data-url="http://link.hhtjim.com/qq/001faIUs4M2zna.mp3"></li>
+                    
+                </ul>
+            
+        </div>
+        
+    <div id="gitalk-container" class="comment link" data-ae="false" data-ci data-cs data-r data-o data-a data-d="false">查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</html>
