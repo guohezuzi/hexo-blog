@@ -1,3 +1,9 @@
+---
+title: Java多线程-Thread类详解
+date: 2019-08-30
+tags:
+---
+
 # Java多线程-Thread类详解
 
 ## 实例方法

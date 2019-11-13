@@ -1,3 +1,9 @@
+---
+title: Java static加载机制
+date: 1999-02-24
+tags:
+---
+
 # Java static加载机制
 
 ## 静态变量

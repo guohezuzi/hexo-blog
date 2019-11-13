@@ -1,3 +1,9 @@
+---
+title: 记一次Java11切换经历
+date: 2019-07-30
+tags:
+---
+
 # 记一次Java11切换经历
 
 ### 系统切换(Arch Linux)

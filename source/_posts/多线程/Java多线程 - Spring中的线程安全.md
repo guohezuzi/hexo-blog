@@ -1,3 +1,9 @@
+---
+title: Java多线程 - Spring中的线程安全
+date: 2019-06-15 17:19:04
+tags:
+---
+
 # Java多线程 - Spring中的线程安全
 
 ## 为什么我们一般使用的Spring bean是线程安全？
