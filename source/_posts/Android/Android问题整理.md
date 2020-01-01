@@ -1,0 +1,87 @@
+# Android问题整理
+
+1.[如何让一个按钮垂直居中](https://stackoverflow.com/questions/20185340/how-to-align-linearlayout-to-vertical-center)
+
+layout_center...属性
+
+2.视频播放相关API
+
+VideoView类
+
+3.SparseArray vs HashMap
+
+4.drawable xml文件的意义
+
+常用于背景和图片
+
+5.AudioFocus机制
+
+使用: audioManager.requestAudioFocus(new AudioFocusReques.Builder(**AudioManager.AudioManager.AUDIOFOCUS_GAIN**).build())
+
+- AUDIOFOCUS_NONE 应用程序不会获取音频焦点，不会终止外部程序的音频播放
+
+- AUDIOFOCUS_GAIN  应用程序获取音频焦点(时间未知)，终止外部程序的音频播放
+
+- AUDIOFOCUS_GAIN_TRANSIENT 应用程序获取音频焦点(临时) 
+
+- AUDIOFOCUS_GAIN_TRANSIENT_MAY_DUCK 应用程序获取音频焦点(临时)，外部程序的音频音量降低
+
+- AUDIOFOCUS_GAIN_TRANSIENT_EXCLUSIVE 应用程序获取音频焦点(临时)，屏蔽所有外部程序的音频音量
+
+6.VideoPager(页面允许左右滑动的布局管理器) 轮播使用
+
+- OnPageChangeListener
+
+- setAdapter 对应页面适配器，FragmentPagerAdapter、FragmentStatePagerAdapter或自己实现
+
+- setPageTransformer 设置页面滑动动画
+
+- ViewPager.setCurrentItem(参数一,false)不展现动画，实现循环的效果
+
+7.手势滑动相关
+
+- cOnTouchListener
+
+- MotionEvent 手指该接触屏幕后所产生的一系列事件,ACTION_DOWN(刚接触)、ACTION_MOVE、ACTION_UP(松开一瞬间)
+
+- VelocityTracker 速度追踪
+
+- GestureDetector 手势检测
+
+- Scroller 弹性滑动对象
+
+8.应用程序架构
+
+- mvc (model-view-presenter) @Deprecated
+
+- mvvm model-view-viewmodel viewmodel类似vue中的date()、props
+
+9.adb 常用命令
+
+1.logcat
+
+2.dumpsys 
+
+3.settings(list get put) 系统变量编辑
+
+10.& 0xff作用
+
+[保证二进制数据的一致性](https://www.cnblogs.com/think-in-java/p/5527389.html)
+
+11.audio native代码位置
+
+- framework/base/core/jni
+
+- framework/base/media/jni
+
+- framework/base/services/core/jni
+
+- framework/av/services
+
+12.屏幕常亮
+
+`getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);`
+
+`getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);`
+
+13.
