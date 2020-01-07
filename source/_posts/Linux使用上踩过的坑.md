@@ -48,7 +48,7 @@ tags:
 
 1.通过`sudo systemctl start bluetooth.service`启动蓝牙服务
 
-2.安装[Bluetooth](https://en.wikipedia.org/wiki/Bluetooth)进行蓝牙控制，参考Bluetooth文档连接蓝牙
+2.安装[bluetoothctl](https://wiki.archlinux.org/index.php/Bluetooth#Console)进行蓝牙控制，参考Bluetooth文档连接蓝牙
 
 #### 硬盘
 

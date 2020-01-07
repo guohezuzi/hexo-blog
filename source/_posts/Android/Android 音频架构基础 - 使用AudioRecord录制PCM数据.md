@@ -15,29 +15,29 @@ if (ContextCompat.checkSelfPermission(AudioActivity.this, Manifest.permission.WR
 
 ```java
 @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        switch (requestCode) {
-            case AUDIO_REQUEST_CODE: {
-                int grantTime = 0;
-                for (int result : grantResults) {
-                    if (result == PackageManager.PERMISSION_GRANTED) {
-                        grantTime++;
-                    }
+public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    switch (requestCode) {
+        case AUDIO_REQUEST_CODE: {
+            int grantTime = 0;
+            for (int result : grantResults) {
+                if (result == PackageManager.PERMISSION_GRANTED) {
+                    grantTime++;
                 }
-                if (grantTime == grantResults.length) {
-                    audioRecord = new AudioRecord(MediaRecorder.AudioSource.MIC,
-                            SAMPLE_RATE_IN_HZ, CHANNEL_IN_STEREO, ENCODING_PCM_16_BIT,
-                            MIN_BUFFER_SIZE);
-                    //initial
-                    mMediaRecorder = new MediaRecorder();
-                    mMediaPlayer = new MediaPlayer();
-                } else {
-                    Toast.makeText(this, "该页面必须授权才能访问！", Toast.LENGTH_SHORT).show();
-                    finish();
-                }
+            }
+            if (grantTime == grantResults.length) {
+                audioRecord = new AudioRecord(MediaRecorder.AudioSource.MIC,
+                        SAMPLE_RATE_IN_HZ, CHANNEL_IN_STEREO, ENCODING_PCM_16_BIT,
+                        MIN_BUFFER_SIZE);
+                //initial
+                mMediaRecorder = new MediaRecorder();
+                mMediaPlayer = new MediaPlayer();
+            } else {
+                Toast.makeText(this, "该页面必须授权才能访问！", Toast.LENGTH_SHORT).show();
+                finish();
             }
         }
     }
+}
 ```
 
 ## 进行PCM数据的录制
@@ -83,17 +83,17 @@ new Thread(new Runnable() {
 
 ```java
 loopRecord = false;
-        audioRecord.stop();
-        Log.d(TAG, "stop record from audio record");
-        try {
-            mDataOutputStream.flush();
-            Log.d(TAG, "data size: " + mDataSize);
-            mDataOutputStream.close();
-            PcmToWavUtil pcmToWavUtil = new PcmToWavUtil(SAMPLE_RATE_IN_HZ, CHANNEL_IN_STEREO, ENCODING_PCM_16_BIT);
-            pcmToWavUtil.pcmToWav(captureFilePath, getExternalFilesDir(Environment.DIRECTORY_MUSIC) + AUDIO_RECORD_FILE_NAME + timestamp + ".wav");
-        } catch (Exception e) {
-            Log.e(TAG, Objects.requireNonNull(e.getMessage()));
-        }
+audioRecord.stop();
+Log.d(TAG, "stop record from audio record");
+try {
+    mDataOutputStream.flush();
+    Log.d(TAG, "data size: " + mDataSize);
+    mDataOutputStream.close();
+    PcmToWavUtil pcmToWavUtil = new PcmToWavUtil(SAMPLE_RATE_IN_HZ, CHANNEL_IN_STEREO, ENCODING_PCM_16_BIT);
+    pcmToWavUtil.pcmToWav(captureFilePath, getExternalFilesDir(Environment.DIRECTORY_MUSIC) + AUDIO_RECORD_FILE_NAME + timestamp + ".wav");
+} catch (Exception e) {
+    Log.e(TAG, Objects.requireNonNull(e.getMessage()));
+}
 ```
 
 wav封装的逻辑：在pcm数据前加入44byte的wav header，对数据的一些说明，参考：[WaveFormat](http://soundfile.sapp.org/doc/WaveFormat/)
