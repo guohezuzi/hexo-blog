@@ -84,4 +84,48 @@ VideoView类
 
 `getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);`
 
-13.
+13.通过代码new View
+
+14.ViewPager ViewView 源码
+
+15.dex->odex->oat        AAPT 资源打包工具
+
+16.Android.mk --extra-packages作用
+
+//--extra-packages是为资源文件设置别名：意思是通过该应用包名+R，com.android.test1.R和com.android.test2.R都可以访问到资源
+`additionalParameters '--extra-packages', 'com.android.test1','--extra-packages','com.android.test2'`
+
+Android.mk
+
+`LOCAL_AAPT_FLAGS += --extra-packages org.chromium.content`
+`LOCAL_AAPT_FLAGS += --extra-packages org.chromium.ui`
+
+R资源生成别名：如果是com.android.test.R，会同时生成org.chromium.content.R和org.chromium.ui.R
+
+17.锁屏Activity逻辑
+
+- 短按
+
+- 长按
+
+18.AndroidManger flag含义
+
+19.TODO
+
+- mediaplayer源码解读
+
+- viewpager源码解读
+
+- viewpager动画
+
+
+
+
+
+
+
+
+
+
+
+
