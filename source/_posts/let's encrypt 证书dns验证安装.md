@@ -6,4 +6,6 @@ tags:
 
 # let's encrypt 证书dns验证安装
 
-./certbot-auto certonly --manual -d cdn.guohezuzi.cn --preferred-challenges dns-01 --server https://acme-v02.api.letsencrypt.org/directory
+./certbot-auto --no-bootstrap --no-self-upgrade certonly --manual -d www.guohezuzi.cn --preferred-challenges dns-01 --server https://acme-v02.api.letsencrypt.org/directory
+
+

@@ -118,14 +118,53 @@ R资源生成别名：如果是com.android.test.R，会同时生成org.chromium.
 
 - viewpager动画
 
+20.一些音频相关的术语
 
+Application Processor(即AP)（应用处理器）AP一般采用[ARM芯片](https://www.baidu.com/s?wd=ARM%E8%8A%AF%E7%89%87&tn=44039180_cpr&fenlei=mv6quAkxTZn0IZRqIHckPjm4nH00T1d9mWwhmy7Wm1--ujP9mH0d0ZwV5Hcvrjm3rH6sPfKWUMw85HfYnjn4nH6sgvPsT6KdThsqpZwYTjCEQLGCpyw9Uz4Bmy-bIi4WUvYETgN-TLwGUv3EPjDknjT4n1mz)的CPU。运行在Application Processor(AP)的软件包称为AP包,包括[操作系统](https://www.baidu.com/s?wd=%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F&tn=44039180_cpr&fenlei=mv6quAkxTZn0IZRqIHckPjm4nH00T1d9mWwhmy7Wm1--ujP9mH0d0ZwV5Hcvrjm3rH6sPfKWUMw85HfYnjn4nH6sgvPsT6KdThsqpZwYTjCEQLGCpyw9Uz4Bmy-bIi4WUvYETgN-TLwGUv3EPjDknjT4n1mz)、用户界面和应用程序等;
 
+Baseband Processor(即BP)（基带处理器）
 
+ADC(analog-to-digital converter)
 
+DAC(digital-to-analog converter)
 
+SmartPA(smart personal assistant)
 
+21.ffmpeg命令格式
 
+```bash
+$ ffmpeg \
+[全局参数] \
+[输入文件参数] \
+-i [输入文件] \
+[输出文件参数] \
+[输出文件]
+```
 
+22.BpBinder(客户端)和BBinder(服务端)
 
+23.Android按照进程的重要性，划分5级：
 
+1. 前台进程 (Foreground process)
 
+2. 可见进程 (Visible process)
+
+3. 服务进程 (Service process)
+
+4. 后台进程 (Background process)
+
+5. 空进程 (Empty process)
+
+24.Service
+
+bindService()、startService()启动，如果需要bind通信使用bindService()，在其中传入的ServiceConnection中获取bind对象通信
+
+IntentService 异步service，简单的说一个IntentService,内部就创建了一个线程，通过Android提供的 Handler Message Looper,这些消息处理的类 构成了一个消息处理的模型。所以IntentService 的onHandleIntent 这个方法其实是在IntentService 中开辟的一个子线程中处理的。
+
+AIDL通信 跨进程通信
+
+25.sva代码位置
+
+3.0 vendor/qcom/proprietary/mm-audio/audio-listen
+
+1.0 vendor/qcom/proprietary/commonsys/qrdplus/sva/audio-listen/sva

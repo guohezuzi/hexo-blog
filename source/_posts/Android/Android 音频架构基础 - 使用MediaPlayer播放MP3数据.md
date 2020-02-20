@@ -5,7 +5,7 @@
 类似[MediaRecord](https://www.guohezuzi.cn/article/android-audio-media-record) ，状态图如下
 
 <center>
-<img src="https://www.guohezuzi.cn/public/img/blog/mediaplayer_state_diagram.png" width="80%" />    
+<img src="https://www.guohezuzi.cn/public/img/blog/mediaplayer_state_diagram.png" width="60%" />    
 </center>
 
 ## 具体代码

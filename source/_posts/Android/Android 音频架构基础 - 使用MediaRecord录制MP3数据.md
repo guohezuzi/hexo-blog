@@ -5,7 +5,8 @@
 MediaRecord的整个录制过程可以用下面这个状态机表示，内部封装了编解码过程。
 
 <center>
-<img src="https://www.guohezuzi.cn/public/img/blog/mediarecorder_state_diagram.png" width="80%" />
+
+<img src="https://www.guohezuzi.cn/public/img/blog/mediarecorder_state_diagram.png" width="60%" />
 
 </center>
 
