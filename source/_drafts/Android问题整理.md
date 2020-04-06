@@ -141,7 +141,7 @@ $ ffmpeg \
 [输出文件]
 ```
 
-22.BpBinder(客户端)和BBinder(服务端)
+22.BpBinder(客户端)和BBinder(服务端)、Bn(Binder Native)和BP(Binder Proxy)
 
 23.Android按照进程的重要性，划分5级：
 
@@ -168,3 +168,17 @@ AIDL通信 跨进程通信
 3.0 vendor/qcom/proprietary/mm-audio/audio-listen
 
 1.0 vendor/qcom/proprietary/commonsys/qrdplus/sva/audio-listen/sva
+
+26.handle message机制
+
+一般用法:自定义handle对不同数据处理,通过sendmessage方法传递数据,自定义handle的callback处理,需要注意处理过程是同步的,会阻塞UI线程,可以通过自定义AsyncTask处理 
+
+AsyncTask<异步任务参数类型,任务进度类型,返回结果类型>
+
+onPreExecute() [主线程]
+
+doInBackground() [异步线程] 异步执行的任务
+
+onProgressUpdate() [主线程]
+
+onPostExecute() [主线程]

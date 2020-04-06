@@ -68,6 +68,10 @@ tags:
 
 ps:可安装[Arandr](https://christian.amsuess.com/tools/arandr/)进行图像界面的操作
 
+3.亮度调节
+
+可通过修改 /sys/class/backlight/intel_backlight/brightness来修改,该文件默认是只读的,需加写权限
+
 ### 音频
 
 1.安装alsa-utils,`sudo pacman install alsa-utils`
