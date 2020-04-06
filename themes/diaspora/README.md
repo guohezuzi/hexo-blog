@@ -107,7 +107,7 @@ mp3:
     - http://link.hhtjim.com/163/425570952.mp3
 
 # 首页封面图, 为空时取文章的cover作为封面
-welcome_cover: # /img/welcome-cover.jpg
+welcome_cover: # /img/welcome-cover.png
 
 # 默认文章封面图
 cover: /img/cover.jpg
